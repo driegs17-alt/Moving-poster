@@ -1,73 +1,131 @@
-<main class="page">
-  <section class="controls">
-    <h1>Poster Controls</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Poster</title>
 
-    <label>
-      Poster headline
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="page">
+    <section class="controls">
+      <h1>Poster Controls</h1>
+
+      <label for="word-input">Poster Text</label>
+      <input type="text" id="word-input" value="MIDNIGHT">
+
+      <label for="poster-color">Poster Color</label>
+      <input type="color" id="poster-color" value="#1b1937">
+
+      <label for="circle-color">Circle Color</label>
+      <input type="color" id="circle-color" value="#f04d34">
+
+      <label for="headline-color">Headline Color</label>
+      <input type="color" id="headline-color" value="#f4e9d7">
+
+      <label for="headline-x">
+        Move Text Left / Right
+      </label>
       <input
-        type="text"
-        id="headlineInput"
-        value="MIDNIGHT"
-        maxlength="18"
+        type="range"
+        id="headline-x"
+        min="-180"
+        max="180"
+        value="0"
       >
-    </label>
+      <output for="headline-x">0</output>
 
-    <label>
-      Text color
-      <input type="color" id="textColor" value="#f4e9d7">
-    </label>
+      <label for="headline-y">
+        Move Text Up / Down
+      </label>
+      <input
+        type="range"
+        id="headline-y"
+        min="-180"
+        max="180"
+        value="0"
+      >
+      <output for="headline-y">0</output>
 
-    <label>
-      Background color
-      <input type="color" id="backgroundColor" value="#1b1937">
-    </label>
+      <label for="headline-scale">
+        Text Scale
+      </label>
+      <input
+        type="range"
+        id="headline-scale"
+        min="0.4"
+        max="2"
+        step="0.1"
+        value="1"
+      >
+      <output for="headline-scale">1</output>
 
-    <label>
-      Circle color
-      <input type="color" id="circleColor" value="#f04d34">
-    </label>
+      <label for="circle-x">
+        Move Circle Left / Right
+      </label>
+      <input
+        type="range"
+        id="circle-x"
+        min="-200"
+        max="200"
+        value="0"
+      >
+      <output for="circle-x">0</output>
 
-    <label>
-      Text size
-      <input type="range" id="sizeInput" min="30" max="120" value="76">
-      <span id="sizeValue">76px</span>
-    </label>
+      <label for="circle-y">
+        Move Circle Up / Down
+      </label>
+      <input
+        type="range"
+        id="circle-y"
+        min="-200"
+        max="200"
+        value="0"
+      >
+      <output for="circle-y">0</output>
 
-    <label>
-      X position
-      <input type="range" id="xInput" min="-180" max="180" value="0">
-      <span id="xValue">0px</span>
-    </label>
+      <label for="circle-scale">
+        Circle Scale
+      </label>
+      <input
+        type="range"
+        id="circle-scale"
+        min="0.3"
+        max="2"
+        step="0.1"
+        value="1"
+      >
+      <output for="circle-scale">1</output>
 
-    <label>
-      Y position
-      <input type="range" id="yInput" min="-180" max="180" value="0">
-      <span id="yValue">0px</span>
-    </label>
+      <label for="number-rotate">
+        Rotate Number
+      </label>
+      <input
+        type="range"
+        id="number-rotate"
+        min="-180"
+        max="180"
+        value="0"
+      >
+      <output for="number-rotate">0</output>
+    </section>
 
-    <label>
-      Rotate
-      <input type="range" id="rotateInput" min="-30" max="30" value="-8">
-      <span id="rotateValue">-8°</span>
-    </label>
+    <section class="poster" id="poster">
+      <p class="top-text">LIVE / ONE NIGHT ONLY</p>
 
-    <label>
-      Skew
-      <input type="range" id="skewInput" min="-25" max="25" value="-10">
-      <span id="skewValue">-10°</span>
-    </label>
-  </section>
+      <div class="circle" id="circle"></div>
 
-  <section class="poster" id="poster">
-    <p class="top-text">LIVE / ONE NIGHT ONLY</p>
+      <h2 id="word">MIDNIGHT</h2>
 
-    <div class="circle" id="circle"></div>
+      <p class="date">OCTOBER 24 · 9PM</p>
+      <p class="location">ATHENS, GEORGIA</p>
 
-    <h2 id="headline">MIDNIGHT</h2>
+      <div class="poster-number" id="poster-number">02—2</div>
+    </section>
+  </main>
 
-    <p class="date">OCTOBER 24 · 9PM</p>
-    <p class="location">ATHENS, GEORGIA</p>
-
-    <div class="poster-number">02—2</div>
-  </section>
-</main>
+  <script src="functions.js"></script>
+</body>
+</html>
