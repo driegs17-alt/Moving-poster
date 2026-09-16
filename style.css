@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 
+/* =========================================================
+   POSTER LAB — COMPLETE STYLESHEET
+   This file matches the current index.html and script.js.
+   Do not combine it with older style.css versions.
+   ========================================================= */
+
 :root {
   --ink: #111111;
   --paper: #fff7dd;
@@ -13,7 +19,12 @@
   box-sizing: border-box;
 }
 
+html {
+  background: var(--paper);
+}
+
 body {
+  min-width: 320px;
   min-height: 100vh;
   margin: 0;
   overflow-x: hidden;
@@ -23,103 +34,291 @@ body {
     linear-gradient(90deg, rgba(17, 17, 17, 0.07) 1px, transparent 1px);
   background-size: 28px 28px;
   color: var(--ink);
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Space Grotesk", Arial, sans-serif;
+}
+
+button,
+input,
+select {
+  font: inherit;
 }
 
 .page {
   display: grid;
-  grid-template-columns: minmax(250px, 320px) minmax(330px, 620px);
-  gap: 48px;
+  grid-template-columns: minmax(280px, 340px) minmax(340px, 620px);
+  gap: 52px;
   align-items: start;
   justify-content: center;
-  padding: 48px 24px 70px;
+  padding: 48px 28px 72px;
 }
 
-/* CONTROL PANEL */
+/* =========================================================
+   CONTROL PANEL
+   ========================================================= */
 
 .controls {
   position: sticky;
   top: 24px;
-  background: var(--white);
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  background: #ffffff;
   border: 3px solid var(--ink);
   box-shadow: 10px 10px 0 var(--blue);
-  padding: 24px;
+  scrollbar-color: var(--blue) #ffffff;
+  scrollbar-width: thin;
 }
 
-.controls h1 {
-  margin: -24px -24px 24px;
-  padding: 16px 20px;
+.controls::-webkit-scrollbar {
+  width: 10px;
+}
+
+.controls::-webkit-scrollbar-track {
+  background: #ffffff;
+  border-left: 2px solid var(--ink);
+}
+
+.controls::-webkit-scrollbar-thumb {
+  background: var(--blue);
+  border: 2px solid var(--ink);
+}
+
+.control-header {
+  padding: 24px;
   background: var(--blue);
   border-bottom: 3px solid var(--ink);
-  color: var(--white);
-  font-family: "Archivo Black", sans-serif;
-  font-size: 22px;
-  letter-spacing: -0.8px;
-  line-height: 1;
+  color: #ffffff;
+}
+
+.eyebrow {
+  margin: 0 0 9px;
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+}
+
+.control-header h1 {
+  margin: 0;
+  font-family: "Archivo Black", Impact, sans-serif;
+  font-size: 42px;
+  letter-spacing: -2.5px;
+  line-height: 0.78;
+  text-transform: uppercase;
+}
+
+.control-intro {
+  max-width: 270px;
+  margin: 22px 0 0;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.control-group {
+  margin: 0;
+  padding: 23px 24px 26px;
+  border-bottom: 2px solid var(--ink);
+}
+
+.control-group:last-child {
+  border-bottom: 0;
+}
+
+.group-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.group-number {
+  margin: 0;
+  color: var(--blue);
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.group-heading h2 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
   text-transform: uppercase;
 }
 
 label {
   display: block;
-  margin-top: 18px;
+  margin-top: 17px;
   color: var(--ink);
   font-family: "DM Mono", monospace;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 500;
-  letter-spacing: 0.7px;
+  letter-spacing: 0.65px;
   text-transform: uppercase;
 }
 
-input {
+.group-heading + label {
+  margin-top: 0;
+}
+
+input,
+select {
   display: block;
   width: 100%;
   margin-top: 7px;
 }
 
-input[type="text"] {
+input[type="text"],
+select {
   border: 2px solid var(--ink);
   border-radius: 0;
-  background: var(--paper);
+  background: #fffdf8;
   color: var(--ink);
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 18px;
-  font-weight: 700;
+  font-family: "Space Grotesk", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+input[type="text"] {
   padding: 10px 11px;
 }
 
-input[type="text"]:focus {
+select {
+  min-height: 44px;
+  cursor: pointer;
+  padding: 9px 34px 9px 10px;
+}
+
+input[type="text"]:focus,
+select:focus,
+button:focus-visible {
   outline: 3px solid var(--yellow);
-  outline-offset: 1px;
+  outline-offset: 2px;
 }
 
 input[type="color"] {
-  height: 38px;
+  height: 40px;
   cursor: pointer;
   border: 2px solid var(--ink);
   border-radius: 0;
-  background: var(--white);
+  background: #ffffff;
   padding: 3px;
 }
 
 input[type="range"] {
-  height: 16px;
+  height: 18px;
   cursor: pointer;
   accent-color: var(--red);
 }
 
 output {
   display: inline-block;
-  min-width: 38px;
+  min-width: 52px;
   margin-top: 6px;
   padding: 3px 7px;
   background: var(--yellow);
   border: 1.5px solid var(--ink);
   color: var(--ink);
   font-family: "DM Mono", monospace;
-  font-size: 11px;
+  font-size: 10px;
+  font-weight: 500;
 }
 
-/* POSTER */
+.template-info {
+  margin-top: 17px;
+  padding: 13px;
+  background: #f5f1e8;
+  border-left: 5px solid var(--red);
+}
+
+.template-name {
+  margin: 0 0 5px;
+  font-family: "Archivo Black", Impact, sans-serif;
+  font-size: 16px;
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.template-description {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.actions {
+  background: #111111;
+}
+
+.actions button {
+  width: 100%;
+  cursor: pointer;
+  border: 2px solid #ffffff;
+  border-radius: 0;
+  background: var(--red);
+  color: #ffffff;
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  padding: 13px 12px;
+  text-transform: uppercase;
+}
+
+.actions button:hover {
+  background: var(--blue);
+}
+
+#status-message {
+  margin: 12px 0 0;
+  color: #ffffff;
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+/* =========================================================
+   LIVE PREVIEW
+   ========================================================= */
+
+.preview-area {
+  width: 100%;
+}
+
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.preview-header p {
+  margin: 0;
+}
+
+#template-status {
+  color: var(--blue);
+  text-align: right;
+}
+
+.preview-note {
+  margin: 22px 0 0;
+  color: #313131;
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2px;
+  text-align: center;
+}
+
+/* =========================================================
+   BASE POSTER
+   Every template below overrides this same poster structure.
+   ========================================================= */
 
 .poster {
   position: relative;
@@ -133,25 +332,23 @@ output {
   color: var(--ink);
 }
 
-/* Large blue diagonal graphic */
-
-.poster::before {
+.poster::before,
+.poster::after {
   position: absolute;
   z-index: -1;
+  content: "";
+}
+
+.poster::before {
   top: -18%;
   right: -48%;
   width: 105%;
   height: 132%;
   background: var(--blue);
-  content: "";
   transform: rotate(28deg);
 }
 
-/* Small red corner panel */
-
 .poster::after {
-  position: absolute;
-  z-index: 0;
   right: 0;
   bottom: 0;
   width: 31%;
@@ -159,28 +356,24 @@ output {
   background: var(--red);
   border-top: 4px solid var(--ink);
   border-left: 4px solid var(--ink);
-  content: "";
 }
 
-.top-text,
-.date,
-.location {
+.top-text {
   position: relative;
   z-index: 4;
-  margin: 0;
+  display: inline-block;
+  max-width: calc(100% - 44px);
+  margin: 22px;
+  padding: 6px 8px;
+  background: #ffffff;
+  border: 2px solid var(--ink);
+  color: var(--ink);
   font-family: "DM Mono", monospace;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.8px;
+  line-height: 1.25;
   text-transform: uppercase;
-}
-
-.top-text {
-  display: inline-block;
-  margin: 22px;
-  padding: 6px 8px;
-  background: var(--white);
-  border: 2px solid var(--ink);
 }
 
 .circle {
@@ -195,9 +388,8 @@ output {
   background: var(--red);
   box-shadow: 9px 9px 0 var(--ink);
   transform-origin: center;
+  transition: border-width 0.15s ease;
 }
-
-/* Decorative circle stripes */
 
 .circle::before,
 .circle::after {
@@ -224,9 +416,9 @@ output {
   left: 50%;
   width: 110%;
   margin: 0;
-  color: var(--white);
-  font-family: "Archivo Black", sans-serif;
-  font-size: clamp(55px, 10vw, 105px);
+  color: #ffffff;
+  font-family: "Archivo Black", Impact, sans-serif;
+  font-size: clamp(54px, 10vw, 105px);
   font-weight: 400;
   letter-spacing: -5px;
   line-height: 0.78;
@@ -237,25 +429,29 @@ output {
   word-break: break-word;
 }
 
-.date {
+.poster-meta {
   position: absolute;
-  z-index: 4;
-  bottom: 62px;
+  z-index: 5;
+  bottom: 27px;
   left: 24px;
-  max-width: 180px;
-  color: var(--ink);
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 1.35;
+  max-width: 230px;
 }
 
+.date,
 .location {
-  position: absolute;
-  z-index: 4;
-  bottom: 28px;
-  left: 24px;
+  margin: 0;
   color: var(--ink);
-  font-size: 11px;
+  font-family: "DM Mono", monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.date {
+  margin-bottom: 5px;
+  font-size: 14px;
 }
 
 .poster-number {
@@ -263,30 +459,697 @@ output {
   z-index: 2;
   right: -19px;
   bottom: 14px;
-  color: var(--white);
-  font-family: "Archivo Black", sans-serif;
-  font-size: 115px;
-  line-height: 0.8;
+  color: #ffffff;
+  font-family: "Archivo Black", Impact, sans-serif;
+  font-size: 112px;
   letter-spacing: -10px;
+  line-height: 0.8;
   opacity: 1;
   transform-origin: center;
 }
 
-/* Responsive layout */
+#word,
+.circle,
+.poster-number {
+  will-change: transform;
+}
 
-@media (max-width: 820px) {
+/* =========================================================
+   01 — CITRUS FM
+   Swiss / Neo-Brutalist Festival
+   ========================================================= */
+
+.poster.template-citrus {
+  background: #f9eb35;
+  border-color: #111111;
+  box-shadow: 14px 14px 0 #111111;
+}
+
+.poster.template-citrus::before {
+  top: -18%;
+  right: -48%;
+  width: 105%;
+  height: 132%;
+  border: 0;
+  border-radius: 0;
+  background: #1540ff;
+  opacity: 1;
+  transform: rotate(28deg);
+}
+
+.poster.template-citrus::after {
+  right: 0;
+  bottom: 0;
+  left: auto;
+  width: 31%;
+  height: 26%;
+  border-top: 4px solid #111111;
+  border-left: 4px solid #111111;
+  border-radius: 0;
+  background: #ff4b30;
+  transform: none;
+}
+
+.poster.template-citrus .top-text {
+  background: #ffffff;
+  border-color: #111111;
+  color: #111111;
+}
+
+.poster.template-citrus .circle {
+  border-color: #111111;
+  border-radius: 50%;
+  box-shadow: 9px 9px 0 #111111;
+}
+
+.poster.template-citrus .circle::before,
+.poster.template-citrus .circle::after {
+  background: #111111;
+}
+
+.poster.template-citrus #word {
+  color: #ffffff;
+  font-family: "Archivo Black", Impact, sans-serif;
+  text-shadow: 5px 5px 0 #111111;
+}
+
+.poster.template-citrus .date,
+.poster.template-citrus .location {
+  color: #111111;
+}
+
+.poster.template-citrus .poster-number {
+  color: #ffffff;
+}
+
+/* =========================================================
+   02 — VELVET
+   Dark Editorial Nightclub
+   ========================================================= */
+
+.poster.template-velvet {
+  background: #170d22;
+  border-color: #ff4cc8;
+  box-shadow: 14px 14px 0 #ff4cc8;
+}
+
+.poster.template-velvet::before {
+  top: -20%;
+  right: -25%;
+  width: 90%;
+  height: 150%;
+  border: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, #ff4cc8 0 18%, transparent 19%),
+    radial-gradient(circle at 50% 50%, transparent 0 36%, #8c2cff 37% 42%, transparent 43%),
+    radial-gradient(circle at 50% 50%, transparent 0 58%, #ff4cc8 59% 64%, transparent 65%);
+  opacity: 0.9;
+  transform: rotate(0deg);
+}
+
+.poster.template-velvet::after {
+  right: auto;
+  bottom: -8%;
+  left: -8%;
+  width: 76%;
+  height: 34%;
+  border: 0;
+  border-radius: 0;
+  background: #8c2cff;
+  transform: rotate(-9deg);
+}
+
+.poster.template-velvet .top-text {
+  background: transparent;
+  border-color: #ff4cc8;
+  color: #ffb6e8;
+}
+
+.poster.template-velvet .circle {
+  border: 2px solid #fce8ff;
+  border-radius: 0;
+  box-shadow: 0 0 0 8px #ff4cc8;
+}
+
+.poster.template-velvet .circle::before,
+.poster.template-velvet .circle::after {
+  height: 2px;
+  background: #fce8ff;
+}
+
+.poster.template-velvet #word {
+  color: #fce8ff;
+  font-family: "Space Grotesk", Arial, sans-serif;
+  font-size: clamp(50px, 9vw, 90px);
+  font-weight: 700;
+  letter-spacing: -7px;
+  line-height: 0.82;
+  text-shadow: 0 0 22px #ff4cc8;
+}
+
+.poster.template-velvet .date,
+.poster.template-velvet .location {
+  color: #ffb6e8;
+}
+
+.poster.template-velvet .poster-number {
+  color: #ff4cc8;
+  font-family: "DM Mono", monospace;
+  font-size: 72px;
+  letter-spacing: -6px;
+  opacity: 0.9;
+}
+
+/* =========================================================
+   03 — SIGNAL
+   Fluorescent Digital Rave
+   ========================================================= */
+
+.poster.template-signal {
+  background: #07100e;
+  border-color: #a6ff00;
+  box-shadow: 14px 14px 0 #a6ff00;
+}
+
+.poster.template-signal::before {
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 0;
+  background-image:
+    linear-gradient(rgba(166, 255, 0, 0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(166, 255, 0, 0.22) 1px, transparent 1px);
+  background-size: 30px 30px;
+  opacity: 1;
+  transform: none;
+}
+
+.poster.template-signal::after {
+  right: -20%;
+  bottom: -24%;
+  left: auto;
+  width: 88%;
+  height: 65%;
+  border: 2px solid #00f0ff;
+  border-radius: 50%;
+  background: transparent;
+  transform: none;
+}
+
+.poster.template-signal .top-text {
+  background: #a6ff00;
+  border-color: #a6ff00;
+  color: #07100e;
+}
+
+.poster.template-signal .circle {
+  border: 2px dashed #00f0ff;
+  border-radius: 50%;
+  box-shadow: 0 0 26px #a6ff00;
+}
+
+.poster.template-signal .circle::before,
+.poster.template-signal .circle::after {
+  height: 2px;
+  background: #07100e;
+}
+
+.poster.template-signal #word {
+  color: #a6ff00;
+  font-family: "DM Mono", monospace;
+  font-size: clamp(40px, 8vw, 78px);
+  font-weight: 500;
+  letter-spacing: -4px;
+  line-height: 0.9;
+  text-shadow: 3px 3px 0 #00f0ff;
+}
+
+.poster.template-signal .date,
+.poster.template-signal .location {
+  color: #a6ff00;
+}
+
+.poster.template-signal .poster-number {
+  color: #00f0ff;
+  font-family: "DM Mono", monospace;
+  font-size: 76px;
+  letter-spacing: -7px;
+  opacity: 0.9;
+}
+
+/* =========================================================
+   04 — ARCHIVE
+   Analog Museum Exhibition
+   ========================================================= */
+
+.poster.template-archive {
+  background: #d9c5a2;
+  border-color: #2a2118;
+  box-shadow: 14px 14px 0 #2a2118;
+}
+
+.poster.template-archive::before {
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 0;
+  background: repeating-linear-gradient(90deg, transparent 0 19px, rgba(42, 33, 24, 0.15) 20px 21px);
+  opacity: 1;
+  transform: none;
+}
+
+.poster.template-archive::after {
+  right: 8%;
+  bottom: 10%;
+  left: auto;
+  width: 42%;
+  height: 38%;
+  border: 3px solid #2a2118;
+  border-radius: 50% 43% 52% 46%;
+  background: #b94f36;
+  transform: rotate(16deg);
+}
+
+.poster.template-archive .top-text {
+  background: #2a2118;
+  border-color: #2a2118;
+  color: #d9c5a2;
+}
+
+.poster.template-archive .circle {
+  border: 3px solid #2a2118;
+  border-radius: 50% 43% 52% 46%;
+  box-shadow: none;
+}
+
+.poster.template-archive .circle::before,
+.poster.template-archive .circle::after {
+  height: 3px;
+  background: #2a2118;
+}
+
+.poster.template-archive #word {
+  color: #2a2118;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(54px, 9vw, 94px);
+  font-weight: 700;
+  letter-spacing: -5px;
+  line-height: 0.78;
+  text-shadow: none;
+}
+
+.poster.template-archive .date,
+.poster.template-archive .location {
+  color: #2a2118;
+}
+
+.poster.template-archive .poster-number {
+  color: #b94f36;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 100px;
+  letter-spacing: -9px;
+  opacity: 0.9;
+}
+
+/* =========================================================
+   05 — MONO
+   International Typographic Black-and-White
+   ========================================================= */
+
+.poster.template-mono {
+  background: #f4f2ed;
+  border-color: #0a0a0a;
+  box-shadow: 14px 14px 0 #0a0a0a;
+}
+
+.poster.template-mono::before {
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border: 20px solid #0a0a0a;
+  border-radius: 0;
+  background: repeating-linear-gradient(135deg, transparent 0 15px, rgba(10, 10, 10, 0.1) 16px 17px);
+  opacity: 1;
+  transform: none;
+}
+
+.poster.template-mono::after {
+  right: 8%;
+  bottom: 8%;
+  left: auto;
+  width: 47%;
+  height: 47%;
+  border: 8px solid #0a0a0a;
+  border-radius: 50%;
+  background: #ffffff;
+  transform: none;
+}
+
+.poster.template-mono .top-text {
+  background: #0a0a0a;
+  border-color: #0a0a0a;
+  color: #ffffff;
+}
+
+.poster.template-mono .circle {
+  border: 8px solid #0a0a0a;
+  border-radius: 50%;
+  box-shadow: none;
+}
+
+.poster.template-mono .circle::before,
+.poster.template-mono .circle::after {
+  height: 7px;
+  background: #0a0a0a;
+}
+
+.poster.template-mono #word {
+  color: #0a0a0a;
+  font-family: "Archivo Black", Impact, sans-serif;
+  font-size: clamp(58px, 11vw, 112px);
+  letter-spacing: -8px;
+  line-height: 0.72;
+  text-shadow: none;
+}
+
+.poster.template-mono .date,
+.poster.template-mono .location {
+  color: #0a0a0a;
+}
+
+.poster.template-mono .poster-number {
+  color: #0a0a0a;
+  font-family: "Archivo Black", Impact, sans-serif;
+  opacity: 0.14;
+}
+
+/* =========================================================
+   06 — ORBIT
+   Space-Age / Cosmic Exhibition
+   ========================================================= */
+
+.poster.template-orbit {
+  background: #090e2a;
+  border-color: #d9c9ff;
+  box-shadow: 14px 14px 0 #7d5cff;
+}
+
+.poster.template-orbit::before {
+  top: -15%;
+  right: -20%;
+  width: 115%;
+  height: 115%;
+  border: 1px solid rgba(246, 241, 255, 0.45);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 20% 25%, #ffffff 0 1px, transparent 2px),
+    radial-gradient(circle at 72% 15%, #ffffff 0 1px, transparent 2px),
+    radial-gradient(circle at 42% 62%, #ffffff 0 1px, transparent 2px),
+    radial-gradient(circle at 82% 72%, #ffffff 0 1px, transparent 2px),
+    radial-gradient(circle at 50% 50%, #352786 0 18%, transparent 19%),
+    radial-gradient(circle at 50% 50%, transparent 0 42%, #7d5cff 43% 44%, transparent 45%);
+  opacity: 1;
+  transform: rotate(18deg);
+}
+
+.poster.template-orbit::after {
+  right: -16%;
+  bottom: 7%;
+  left: auto;
+  width: 72%;
+  height: 20%;
+  border: 2px solid #ffb6d9;
+  border-radius: 50%;
+  background: transparent;
+  transform: rotate(-18deg);
+}
+
+.poster.template-orbit .top-text {
+  background: #f6f1ff;
+  border-color: #f6f1ff;
+  color: #090e2a;
+}
+
+.poster.template-orbit .circle {
+  border: 2px solid #ffb6d9;
+  border-radius: 50%;
+  box-shadow: 0 0 35px rgba(125, 92, 255, 0.8);
+}
+
+.poster.template-orbit .circle::before,
+.poster.template-orbit .circle::after {
+  height: 2px;
+  background: #f6f1ff;
+}
+
+.poster.template-orbit #word {
+  color: #f6f1ff;
+  font-family: "Space Grotesk", Arial, sans-serif;
+  font-size: clamp(48px, 9vw, 96px);
+  font-weight: 700;
+  letter-spacing: -6px;
+  line-height: 0.78;
+  text-shadow: 3px 3px 0 #7d5cff;
+}
+
+.poster.template-orbit .date,
+.poster.template-orbit .location {
+  color: #d9c9ff;
+}
+
+.poster.template-orbit .poster-number {
+  color: #ffb6d9;
+  font-family: "DM Mono", monospace;
+  font-size: 82px;
+  letter-spacing: -8px;
+  opacity: 0.85;
+}
+
+/* =========================================================
+   07 — STUDIO
+   Premium Contemporary Gallery
+   ========================================================= */
+
+.poster.template-studio {
+  background: #e8e4dc;
+  border-color: #1f1d1a;
+  box-shadow: 14px 14px 0 #c5ab89;
+}
+
+.poster.template-studio::before {
+  top: 8%;
+  right: 9%;
+  width: 57%;
+  height: 71%;
+  border: 1px solid #1f1d1a;
+  border-radius: 0;
+  background: linear-gradient(145deg, #b8a288, #efece5 52%, #8d7562);
+  opacity: 1;
+  transform: none;
+}
+
+.poster.template-studio::after {
+  right: 17%;
+  bottom: 16%;
+  left: auto;
+  width: 30%;
+  height: 30%;
+  border: 1px solid #1f1d1a;
+  border-radius: 50%;
+  background: #b83e2d;
+  transform: none;
+}
+
+.poster.template-studio .top-text {
+  background: transparent;
+  border-color: #1f1d1a;
+  color: #1f1d1a;
+}
+
+.poster.template-studio .circle {
+  border: 1px solid #1f1d1a;
+  border-radius: 50%;
+  box-shadow: none;
+}
+
+.poster.template-studio .circle::before,
+.poster.template-studio .circle::after {
+  height: 1px;
+  background: #1f1d1a;
+}
+
+.poster.template-studio #word {
+  color: #1f1d1a;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(56px, 9vw, 96px);
+  font-weight: 700;
+  letter-spacing: -5px;
+  line-height: 0.8;
+  text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.7);
+}
+
+.poster.template-studio .date,
+.poster.template-studio .location {
+  color: #1f1d1a;
+}
+
+.poster.template-studio .poster-number {
+  color: #b83e2d;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 106px;
+  letter-spacing: -9px;
+  opacity: 0.75;
+}
+
+/* =========================================================
+   08 — PULP
+   Risograph / Independent Print
+   ========================================================= */
+
+.poster.template-pulp {
+  background: #f4d7bd;
+  border-color: #23396b;
+  box-shadow: 14px 14px 0 #23396b;
+}
+
+.poster.template-pulp::before {
+  top: -24%;
+  right: -17%;
+  width: 112%;
+  height: 80%;
+  border: 0;
+  border-radius: 48% 52% 45% 55%;
+  background:
+    radial-gradient(#e54744 1.3px, transparent 1.3px),
+    #e54744;
+  background-size: 7px 7px;
+  opacity: 1;
+  transform: rotate(-12deg);
+}
+
+.poster.template-pulp::after {
+  right: -12%;
+  bottom: -12%;
+  left: auto;
+  width: 73%;
+  height: 56%;
+  border: 3px solid #23396b;
+  border-radius: 50% 40% 48% 42%;
+  background: #f4cb3f;
+  transform: rotate(18deg);
+}
+
+.poster.template-pulp .top-text {
+  background: #23396b;
+  border-color: #23396b;
+  color: #f4d7bd;
+}
+
+.poster.template-pulp .circle {
+  border: 3px solid #23396b;
+  border-radius: 48% 52% 45% 55%;
+  box-shadow: 6px 6px 0 #e54744;
+}
+
+.poster.template-pulp .circle::before,
+.poster.template-pulp .circle::after {
+  height: 3px;
+  background: #23396b;
+}
+
+.poster.template-pulp #word {
+  color: #23396b;
+  font-family: "Archivo Black", Impact, sans-serif;
+  font-size: clamp(53px, 10vw, 104px);
+  letter-spacing: -7px;
+  line-height: 0.74;
+  text-shadow: 4px 4px 0 #f4cb3f;
+}
+
+.poster.template-pulp .date,
+.poster.template-pulp .location {
+  color: #23396b;
+}
+
+.poster.template-pulp .poster-number {
+  color: #e54744;
+  font-family: "Archivo Black", Impact, sans-serif;
+  font-size: 106px;
+  letter-spacing: -9px;
+  opacity: 0.9;
+}
+
+/* =========================================================
+   RESPONSIVE LAYOUT
+   ========================================================= */
+
+@media (max-width: 880px) {
   .page {
     grid-template-columns: 1fr;
-    max-width: 620px;
+    max-width: 660px;
     margin: 0 auto;
-    padding: 24px 18px 50px;
+    padding: 26px 20px 56px;
   }
 
   .controls {
     position: static;
+    max-height: none;
+    overflow: visible;
   }
 
   .poster {
-    min-height: 650px;
+    min-height: 700px;
+  }
+}
+
+@media (max-width: 500px) {
+  .page {
+    padding: 18px 14px 42px;
+  }
+
+  .control-header,
+  .control-group {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .control-header h1 {
+    font-size: 37px;
+  }
+
+  .poster {
+    min-height: 560px;
+  }
+
+  .top-text {
+    margin: 16px;
+    font-size: 9px;
+  }
+
+  #word {
+    font-size: clamp(43px, 14vw, 72px);
+  }
+
+  .poster-meta {
+    bottom: 18px;
+    left: 18px;
+  }
+
+  .date {
+    font-size: 11px;
+  }
+
+  .location {
+    font-size: 9px;
+  }
+
+  .poster-number {
+    font-size: 86px;
   }
 }
