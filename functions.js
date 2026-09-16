@@ -1,9 +1,9 @@
-// Get the poster elements
+// Poster elements
 const poster = document.getElementById("poster");
 const headline = document.getElementById("headline");
 const circle = document.getElementById("circle");
 
-// Get the input elements
+// Input elements
 const headlineInput = document.getElementById("headlineInput");
 const textColor = document.getElementById("textColor");
 const backgroundColor = document.getElementById("backgroundColor");
@@ -15,45 +15,60 @@ const yInput = document.getElementById("yInput");
 const rotateInput = document.getElementById("rotateInput");
 const skewInput = document.getElementById("skewInput");
 
-// Reusable function: changes an element's color
-function changeColor(element, color) {
-  element.style.color = color;
-}
-
-// Reusable function: changes an element's background color
-function changeBackground(element, color) {
-  element.style.backgroundColor = color;
-}
-
-// Reusable function: updates the text inside an element
+// Reusable function: changes text content
 function changeText(element, text) {
   element.textContent = text;
 }
 
-// Reusable function: updates number labels beside sliders
-function updateValueLabel(labelId, value, unit) {
-  document.getElementById(labelId).textContent = value + unit;
+// Reusable function: changes text color
+function changeColor(element, color) {
+  element.style.color = color;
 }
 
-// Reusable function: moves, rotates, and skews the headline
-function transformHeadline() {
+// Reusable function: changes background color
+function changeBackground(element, color) {
+  element.style.backgroundColor = color;
+}
+
+// Reusable function: changes the small value display
+function showValue(elementId, value, unit) {
+  document.getElementById(elementId).textContent = value + unit;
+}
+
+// Reusable function:
+// Reads ALL slider values and applies them to the headline.
+function updateHeadline() {
+  const size = sizeInput.value;
   const x = xInput.value;
   const y = yInput.value;
   const rotation = rotateInput.value;
   const skew = skewInput.value;
 
+  headline.style.fontSize = size + "px";
+
   headline.style.transform =
-    `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))
-     rotate(${rotation}deg)
-     skewX(${skew}deg)`;
+    "translate(-50%, -50%) " +
+    "translate(" + x + "px, " + y + "px) " +
+    "rotate(" + rotation + "deg) " +
+    "skewX(" + skew + "deg)";
+
+  showValue("sizeValue", size, "px");
+  showValue("xValue", x, "px");
+  showValue("yValue", y, "px");
+  showValue("rotateValue", rotation, "°");
+  showValue("skewValue", skew, "°");
 }
 
-// Text field interaction
+// Text-field interaction
 headlineInput.addEventListener("input", function () {
-  changeText(headline, headlineInput.value || "MIDNIGHT");
+  if (headlineInput.value === "") {
+    changeText(headline, "MIDNIGHT");
+  } else {
+    changeText(headline, headlineInput.value);
+  }
 });
 
-// Color picker interactions
+// Color-picker interactions
 textColor.addEventListener("input", function () {
   changeColor(headline, textColor.value);
 });
@@ -66,29 +81,12 @@ circleColor.addEventListener("input", function () {
   changeBackground(circle, circleColor.value);
 });
 
-// Text-size slider interaction
-sizeInput.addEventListener("input", function () {
-  headline.style.fontSize = sizeInput.value + "px";
-  updateValueLabel("sizeValue", sizeInput.value, "px");
-});
+// Every slider calls the SAME reusable update function
+sizeInput.addEventListener("input", updateHeadline);
+xInput.addEventListener("input", updateHeadline);
+yInput.addEventListener("input", updateHeadline);
+rotateInput.addEventListener("input", updateHeadline);
+skewInput.addEventListener("input", updateHeadline);
 
-// Position, rotation, and skew slider interactions
-xInput.addEventListener("input", function () {
-  transformHeadline();
-  updateValueLabel("xValue", xInput.value, "px");
-});
-
-yInput.addEventListener("input", function () {
-  transformHeadline();
-  updateValueLabel("yValue", yInput.value, "px");
-});
-
-rotateInput.addEventListener("input", function () {
-  transformHeadline();
-  updateValueLabel("rotateValue", rotateInput.value, "°");
-});
-
-skewInput.addEventListener("input", function () {
-  transformHeadline();
-  updateValueLabel("skewValue", skewInput.value, "°");
-});
+// Apply the default slider settings as soon as the poster loads
+updateHeadline();
