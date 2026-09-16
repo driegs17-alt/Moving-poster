@@ -142,7 +142,9 @@ label span {
   line-height: 0.85;
   text-align: center;
   text-transform: uppercase;
-  transform: translate(-50%, -50%) rotate(-8deg) skewX(-10deg);
+
+  /* JavaScript will replace this when sliders move */
+  transform: translate(-50%, -50%);
 }
 
 .poster-number {
