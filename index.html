@@ -1,0 +1,73 @@
+<main class="page">
+  <section class="controls">
+    <h1>Poster Controls</h1>
+
+    <label>
+      Poster headline
+      <input
+        type="text"
+        id="headlineInput"
+        value="MIDNIGHT"
+        maxlength="18"
+      >
+    </label>
+
+    <label>
+      Text color
+      <input type="color" id="textColor" value="#f4e9d7">
+    </label>
+
+    <label>
+      Background color
+      <input type="color" id="backgroundColor" value="#1b1937">
+    </label>
+
+    <label>
+      Circle color
+      <input type="color" id="circleColor" value="#f04d34">
+    </label>
+
+    <label>
+      Text size
+      <input type="range" id="sizeInput" min="30" max="120" value="76">
+      <span id="sizeValue">76px</span>
+    </label>
+
+    <label>
+      X position
+      <input type="range" id="xInput" min="-180" max="180" value="0">
+      <span id="xValue">0px</span>
+    </label>
+
+    <label>
+      Y position
+      <input type="range" id="yInput" min="-180" max="180" value="0">
+      <span id="yValue">0px</span>
+    </label>
+
+    <label>
+      Rotate
+      <input type="range" id="rotateInput" min="-30" max="30" value="-8">
+      <span id="rotateValue">-8°</span>
+    </label>
+
+    <label>
+      Skew
+      <input type="range" id="skewInput" min="-25" max="25" value="-10">
+      <span id="skewValue">-10°</span>
+    </label>
+  </section>
+
+  <section class="poster" id="poster">
+    <p class="top-text">LIVE / ONE NIGHT ONLY</p>
+
+    <div class="circle" id="circle"></div>
+
+    <h2 id="headline">MIDNIGHT</h2>
+
+    <p class="date">OCTOBER 24 · 9PM</p>
+    <p class="location">ATHENS, GEORGIA</p>
+
+    <div class="poster-number">02—2</div>
+  </section>
+</main>
